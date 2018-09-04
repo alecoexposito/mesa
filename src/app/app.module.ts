@@ -10,6 +10,12 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {AddProductPage} from "../pages/add-product/add-product";
+import { ProductDataProvider } from '../providers/product-data/product-data';
+import {ListProductsPage} from "../pages/list-products/list-products";
+import { SaleDataProvider } from '../providers/sale-data/sale-data';
+import {ListSalesPage} from "../pages/list-sales/list-sales";
+import {SalesPopoverPage} from "../pages/sales-popover/sales-popover";
 
 @NgModule({
   declarations: [
@@ -17,7 +23,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AddProductPage,
+    ListProductsPage,
+    ListSalesPage,
+    SalesPopoverPage
   ],
   imports: [
     BrowserModule,
@@ -29,12 +39,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AddProductPage,
+    ListProductsPage,
+    ListSalesPage,
+    SalesPopoverPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ProductDataProvider,
+    SaleDataProvider,
   ]
 })
 export class AppModule {}
