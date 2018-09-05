@@ -16,6 +16,7 @@ import {ListProductsPage} from "../pages/list-products/list-products";
 import { SaleDataProvider } from '../providers/sale-data/sale-data';
 import {ListSalesPage} from "../pages/list-sales/list-sales";
 import {SalesPopoverPage} from "../pages/sales-popover/sales-popover";
+import {Camera} from "@ionic-native/camera";
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {SalesPopoverPage} from "../pages/sales-popover/sales-popover";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProductDataProvider,
     SaleDataProvider,
+    Camera
   ]
 })
 export class AppModule {}
