@@ -4,7 +4,6 @@ import { SalesPopoverPage } from './sales-popover';
 
 @NgModule({
   declarations: [
-    SalesPopoverPage,
   ],
   imports: [
     IonicPageModule.forChild(SalesPopoverPage),
