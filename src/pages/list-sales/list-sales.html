@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ListSalesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <ion-title>Ventas</ion-title>
+
+      <ion-buttons start>
+        <button ion-button icon-only (click)="presentPopover($event)">
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<!--<ion-fab right top>-->
+  <!--<button ion-fab mini color="light"><ion-icon name="arrow-dropdown"></ion-icon></button>-->
+  <!--<ion-fab-list side="down">-->
+    <!--<button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>-->
+    <!--<button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>-->
+    <!--<button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>-->
+    <!--<button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>-->
+  <!--</ion-fab-list>-->
+<!--</ion-fab>-->
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let sale of getSales()">
+      <ion-label>{{ sale.product.name }} ({{ sale.ammount }})</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
