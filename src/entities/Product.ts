@@ -1,5 +1,7 @@
 import {ProductCategory} from "./ProductCategory";
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {WarehouseProduct} from "./WarehouseProduct";
+import {Sale} from "./Sale";
 
 @Entity('product')
 export class Product {
@@ -14,6 +16,14 @@ export class Product {
 
   @Column()
   measureUnit: string;
-  // @Column()
-  // category: ProductCategory;
+
+  @ManyToOne(type => ProductCategory, category => category.products)
+  category: ProductCategory;
+
+  @OneToMany(type => WarehouseProduct, warehouseProduct => warehouseProduct.warehouse)
+  warehouseProducts: WarehouseProduct[];
+
+  @OneToMany(type => Sale, sale => sale.product)
+  sales: Sale[];
+
 }

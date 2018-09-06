@@ -17,6 +17,8 @@ import { SaleDataProvider } from '../providers/sale-data/sale-data';
 import {ListSalesPage} from "../pages/list-sales/list-sales";
 import {SalesPopoverPage} from "../pages/sales-popover/sales-popover";
 import {Camera} from "@ionic-native/camera";
+import {ImagePicker} from "@ionic-native/image-picker";
+import {Crop} from "@ionic-native/crop";
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import {Camera} from "@ionic-native/camera";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProductDataProvider,
     SaleDataProvider,
-    Camera
+    Camera,
+    ImagePicker,
+    Crop
   ]
 })
 export class AppModule {}

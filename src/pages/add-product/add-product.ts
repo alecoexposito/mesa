@@ -5,6 +5,8 @@ import {MyApp} from "../../app/app.component";
 import {ProductDataProvider} from "../../providers/product-data/product-data";
 import {getRepository, Repository} from "typeorm";
 import {Camera, CameraOptions} from "@ionic-native/camera";
+import {ImagePicker} from "@ionic-native/image-picker";
+import {Crop} from "@ionic-native/crop";
 
 /**
  * Generated class for the AddProductPage page.
@@ -24,6 +26,7 @@ export class AddProductPage {
   @ViewChild('ammount') ammount;
   @ViewChild('price') price;
   @ViewChild('measureUnit') measureUnit;
+  photo: string;
 
   public myApp: MyApp;
 
@@ -34,18 +37,38 @@ export class AddProductPage {
     mediaType: this.camera.MediaType.PICTURE
   }
 
+  reduceImage(selected_pictures: any) : any{
+    return selected_pictures.reduce((promise:any, item:any) => {
+      return promise.then((result) => {
+        return this.cropService.crop(item, {quality: 75})
+          .then(cropped_image => this.photo = cropped_image);
+      });
+    }, Promise.resolve());
+  }
+
   getImage() {
-    this.camera.getPicture(this.options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-      // Handle error
-    });
+    let options= {
+      maximumImagesCount: 1,
+    }
+    // this.photo = new Array<string>();
+    this.imagePicker.getPictures(options)
+      .then((results) => {
+        this.reduceImage(results).then(() => {
+          console.log('all images cropped!!');
+        });
+      }, (err) => { console.log(err) });
+
+    // this.camera.getPicture(this.options).then((imageData) => {
+    //   // imageData is either a base64 encoded string or a file URI
+    //   // If it's base64 (DATA_URL):
+    //   let base64Image = 'data:image/jpeg;base64,' + imageData;
+    // }, (err) => {
+    //   // Handle error
+    // });
   }
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public productData: ProductDataProvider, public camera: Camera) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public productData: ProductDataProvider, public camera: Camera, public imagePicker: ImagePicker, public cropService: Crop) {
 
   }
 
