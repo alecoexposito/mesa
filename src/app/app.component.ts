@@ -6,6 +6,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import {createConnection} from "typeorm";
 import {Product} from "../entities/Product";
+import {WarehouseProduct} from "../entities/WarehouseProduct";
+import {Warehouse} from "../entities/Warehouse";
+import {Sale} from "../entities/Sale";
+import {ProductCategory} from "../entities/ProductCategory";
+import {WorkPeriod} from "../entities/WorkPeriod";
 
 @Component({
   templateUrl: 'app.html'
@@ -31,7 +36,12 @@ export class MyApp {
           logging: ['error', 'query', 'schema'],
           synchronize: true,
           entities: [
-            Product
+            Product,
+            ProductCategory,
+            Sale,
+            Warehouse,
+            WarehouseProduct,
+            WorkPeriod
           ]
         });
       } else {
@@ -43,7 +53,12 @@ export class MyApp {
           logging: ['error', 'query', 'schema'],
           synchronize: true,
           entities: [
-            Product
+            Product,
+            ProductCategory,
+            Sale,
+            Warehouse,
+            WarehouseProduct,
+            WorkPeriod
           ]
         });
       }

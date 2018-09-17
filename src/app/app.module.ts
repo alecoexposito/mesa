@@ -19,6 +19,7 @@ import {SalesPopoverPage} from "../pages/sales-popover/sales-popover";
 import {Camera} from "@ionic-native/camera";
 import {ImagePicker} from "@ionic-native/image-picker";
 import {Crop} from "@ionic-native/crop";
+import { WorkPeriodDataProvider } from '../providers/work-period-data/work-period-data';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {Crop} from "@ionic-native/crop";
     SaleDataProvider,
     Camera,
     ImagePicker,
-    Crop
+    Crop,
+    WorkPeriodDataProvider
   ]
 })
 export class AppModule {}
