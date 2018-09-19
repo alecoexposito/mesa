@@ -15,6 +15,16 @@ var PurifyPlugin = require('@angular-devkit/build-optimizer').PurifyPlugin;
 
 var useDefaultConfig = require('@ionic/app-scripts/config/webpack.config.js');
 
+useDefaultConfig[env].resolve.alias = {
+  "@app": path.resolve('./src/app/'),
+  "@assets": path.resolve('./src/assets/'),
+  "@env": path.resolve(environmentPath()),
+  "@pages": path.resolve('./src/pages/'),
+  "@services": path.resolve('./src/services/'),
+  "@tests": path.resolve('./src/'),
+  "@theme": path.resolve('./src/theme/')
+};
+
 useDefaultConfig.dev.plugins = [
   ionicWebpackFactory.getIonicEnvironmentPlugin(),
   ionicWebpackFactory.getCommonChunksPlugin(),
